@@ -3,20 +3,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const input = document.getElementById('task-input');
     const list = document.getElementById('task-list');
 
-    // 1. Получаем задачи из LocalStorage при загрузке (или пустой массив)
+    
     let tasks = JSON.parse(localStorage.getItem('myTasks')) || [];
 
-    // Функция сохранения текущего состояния в LocalStorage
+    
     function saveTasks() {
         localStorage.setItem('myTasks', JSON.stringify(tasks));
     }
 
-    // Функция создания DOM-элемента задачи (чтобы не дублировать код)
+    
     function renderTask(task, index) {
         const li = document.createElement('li');
         li.className = 'todo-item';
         
-        // Если задача выполнена, сразу добавляем класс
+        
         if (task.completed) {
             li.classList.add('completed');
         }
@@ -39,16 +39,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const editBtn = li.querySelector('.edit-btn');
         const deleteBtn = li.querySelector('.delete-btn');
 
-        // Если задача была выполнена, прячем кнопку редактирования
+        
         if (task.completed) {
             editBtn.style.display = 'none';
         }
 
-        // --- ОБРАБОТЧИК ЧЕКБОКСА ---
+        
         checkbox.addEventListener('change', () => {
-            task.completed = checkbox.checked; // Обновляем данные
-            saveTasks(); // Сохраняем
-
+            task.completed = checkbox.checked; 
+            saveTasks();
             if (checkbox.checked) {
                 li.classList.add('completed');
                 editBtn.style.display = 'none';
@@ -58,25 +57,25 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // --- ОБРАБОТЧИК УДАЛЕНИЯ ---
+        
         deleteBtn.addEventListener('click', () => {
-            tasks.splice(index, 1); // Удаляем из массива
-            saveTasks(); // Сохраняем
-            li.remove(); // Удаляем из DOM
+            tasks.splice(index, 1); 
+            saveTasks(); 
+            li.remove(); 
         });
 
-        // --- ОБРАБОТЧИК РЕДАКТИРОВАНИЯ ---
+        
         editBtn.addEventListener('click', () => {
             if (taskText.contentEditable === 'true') {
-                // Сохраняем изменения
+                
                 taskText.contentEditable = 'false';
                 editBtn.innerHTML = '<i class="fa-solid fa-pen"></i>';
                 
-                // Обновляем текст в массиве и сохраняем
+                
                 task.text = taskText.textContent;
                 saveTasks();
             } else {
-                // Включаем редактирование
+                
                 taskText.contentEditable = 'true';
                 taskText.focus();
                 editBtn.innerHTML = '<i class="fa-solid fa-check"></i>';
@@ -84,27 +83,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Функция добавления новой задачи
+    
     function addTask(text) {
-        // Создаем объект новой задачи
+        
         const newTask = {
             text: text,
             completed: false
         };
         
-        tasks.push(newTask); // Добавляем в массив
-        saveTasks(); // Сохраняем в LocalStorage
+        tasks.push(newTask); 
+        saveTasks(); 
         
-        // Отрисовываем новую задачу на экране
+        
         renderTask(newTask, tasks.length - 1);
     }
 
-    // 2. Отрисовываем все задачи из LocalStorage при загрузке страницы
+    
     tasks.forEach((task, index) => {
         renderTask(task, index);
     });
 
-    // Обработчик отправки формы (Добавление)
+    
     form.addEventListener('submit', (event) => {
         event.preventDefault(); 
         const text = input.value.trim();

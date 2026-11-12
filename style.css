@@ -14,7 +14,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url(https://img3.akspic.ru/crops/1/0/5/6/6/166501/166501-mikael_gustafsson_malenkaya_pamyat-oblako-rastenie-atmosfera-voda-7680x4320.jpg)
+    background: url(https://img2.akspic.ru/crops/9/0/3/3/4/143309/143309-podzemnye_vody-oblako-atmosfera-nebo-tumannost-7680x4320.jpg)
     no-repeat center center/cover;
 
 }
@@ -129,7 +129,7 @@ body {
 
 }
 #task-list li .checkbox:checked {
-    background: #bd5b89;
+    background: #ff0000;
 }
 #task-list li .checkbox:checked::before {
     content: '\2713';
@@ -172,14 +172,14 @@ body {
 .task-buttons .delete-btn {
     background: #bd5b89;
 }
-/* --- СТИЛИ ДЛЯ ДОБАВЛЕННЫХ ЗАДАЧ --- */
 
-/* Контейнер самой задачи (строка) */
+
+
 .todo-item {
     display: flex;
-    justify-content: space-between; /* Текст слева, кнопки справа */
+    justify-content: space-between; 
     align-items: center;
-    background: rgba(255, 255, 255, 0.2); /* Полупрозрачный фон */
+    background: rgba(255, 255, 255, 0.2); 
     backdrop-filter: blur(10px);
     padding: 10px 15px;
     border-radius: 20px;
@@ -187,7 +187,7 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Левая часть: чекбокс + текст */
+
 .task-left {
     display: flex;
     align-items: center;
@@ -195,13 +195,13 @@ body {
     flex: 1;
 }
 
-/* Стилизация текста задачи */
+
 .task-text {
     color: white;
     font-size: 16px;
-    font-family: inherit; /* Использует шрифт из body */
-    outline: none; /* Убираем рамку при редактировании */
-    word-break: break-all; /* Чтобы длинный текст переносился */
+    font-family: inherit; 
+    outline: none; 
+    word-break: break-all; 
 }
 
 /* Правая часть: кнопки */
@@ -211,7 +211,7 @@ body {
     gap: 8px;
 }
 
-/* Стилизация ваших кнопок (карандаш и корзина) */
+
 .task-right button {
     background: rgba(255, 255, 255, 0.8);
     border: none;
@@ -231,7 +231,7 @@ body {
     transform: scale(1.05);
 }
 
-/* Убираем стандартный вид чекбокса и делаем его круглым */
+
 .todo-item .checkbox {
     appearance: none;
     -webkit-appearance: none;
@@ -247,13 +247,12 @@ body {
     align-items: center;
 }
 
-/* Заливка чекбокса при нажатии */
+
 .todo-item .checkbox:checked {
-    background-color: #ff6b81; /* Ваш розовый/красный цвет */
+    background-color: #ff6b81; 
     border-color: #ff6b81;
 }
 
-/* Галочка внутри чекбокса (рисуем через псевдоэлемент) */
 .todo-item .checkbox:checked::after {
     content: '✔';
     color: white;
@@ -261,7 +260,7 @@ body {
     position: absolute;
 }
 
-/* --- СТИЛИ ДЛЯ ВЫПОЛНЕННОЙ ЗАДАЧИ (когда стоит галочка) --- */
+
 .todo-item.completed {
     opacity: 0.6;
 }
@@ -271,8 +270,49 @@ body {
     color: rgba(255, 255, 255, 0.7);
 }
 
-/* Фикс для кнопки редактирования, когда она прячется */
-/* (в JS мы используем display: none, это уберет пустое место) */
 .todo-item.completed .edit-btn {
     display: none;
+}
+@media (max-width: 600px) {
+    .todo-app {
+        padding: 20px 15px;
+        width: 95%;
+        margin: 20px auto;
+        border-radius: 15px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .input-area {
+        display: flex;
+        gap: 10px;
+    }
+
+    #task-input {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+
+    #add-task-btn {
+        width: 45px;
+        height: 45px;
+        flex-shrink: 0;
+    }
+
+    .todo-item {
+        padding: 10px;
+        gap: 5px;
+    }
+
+    .task-text {
+        font-size: 14px;
+    }
+
+    .task-right button {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+    }
 }
