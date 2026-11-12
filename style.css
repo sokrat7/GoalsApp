@@ -14,7 +14,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url(https://img2.akspic.ru/crops/9/0/3/3/4/143309/143309-podzemnye_vody-oblako-atmosfera-nebo-tumannost-7680x4320.jpg)
+    background: url(https://img2.akspic.ru/crops/7/7/3/6/7/176377/176377-senokosnoye_ugodye-atmosfera-oblako-rastenie-prirodnyj_landshaft-3840x2160.jpg)
     no-repeat center center/cover;
 
 }
@@ -314,5 +314,50 @@ body {
         width: 28px;
         height: 28px;
         font-size: 12px;
+    }
+}
+@media (max-width: 600px) {
+    
+    
+    .container {
+        width: 100% !important; 
+        padding: 10px !important; 
+        box-sizing: border-box; 
+    }
+
+    
+    .todo-app {
+        width: 100% !important; 
+        max-width: 100% !important; 
+        min-width: auto !important; 
+        padding: 25px 15px !important;
+        box-sizing: border-box;
+    }
+
+    
+    h1 {
+        font-size: 32px !important;
+    }
+
+    #task-input {
+        font-size: 16px !important; 
+        padding: 15px !important;
+    }
+
+    .task-text {
+        font-size: 16px !important;
+    }
+
+    
+    #add-task-btn {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 20px !important;
+    }
+
+    .task-right button {
+        width: 35px !important;
+        height: 35px !important;
+        font-size: 16px !important;
     }
 }
