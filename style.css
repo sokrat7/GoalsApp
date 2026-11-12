@@ -1,0 +1,278 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+</style>
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: "Jost", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(https://img3.akspic.ru/crops/1/0/5/6/6/166501/166501-mikael_gustafsson_malenkaya_pamyat-oblako-rastenie-atmosfera-voda-7680x4320.jpg)
+    no-repeat center center/cover;
+
+}
+.empty-image {
+    width: 100px;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 20px;
+}
+.todo-app {
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
+    border: 3px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(10px);
+
+}
+
+.todo-app h1 {
+    font-size: 2rem;
+}
+
+.input-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.input-area input {
+    flex: 1;
+    padding: 10px 17px;
+    font-size: 1.1rem;
+    border: none;
+    outline: none;
+    border-radius: 22px;
+    background: rgba(109, 80, 146, 0.3);
+    color: #dbdbdb;
+}
+.input-area input::placeholder {
+    color: rgb(216, 214, 214);
+}
+.input-area button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    padding: 8px;
+    border-radius: 50%;
+    color:#fff;
+    font-size: 1.1rem;
+    background: rgba(109, 80, 146, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    cursor: pointer;
+    transition: all 0.2 ease;
+}
+.input-area button:hover {
+    transform: scale(1.1rem);
+    background: rgb(100, 163, 206);
+}
+.todos-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#task-list {
+    padding-left: 0;
+    margin-left: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+#task-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(109, 80, 146, 0.3);
+    margin-bottom: 10px;
+    padding: 8px 10px;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    color: #fff;
+    position: relative;
+    transition: box-shadow 0.2 ease;
+}
+#task-list li:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+#task-list li .checkbox {
+    min-width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2 ease;
+    appearance: none;
+
+}
+#task-list li .checkbox:checked {
+    background: #bd5b89;
+}
+#task-list li .checkbox:checked::before {
+    content: '\2713';
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+}
+#task-list li span {
+    flex: 1;
+    margin-left: 10px;
+    word-wrap: break-word;
+}
+.task-buttons {
+    display: flex;
+    gap: 10px;
+    margin-right: auto;
+}
+.task-buttons button {
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2 ease;
+    font-display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.task-buttons button:hover {
+    transform: scale(1.2);
+}
+.task-buttons .edit-btn {
+    background: #ffbf00;
+}
+.task-buttons .delete-btn {
+    background: #bd5b89;
+}
+/* --- СТИЛИ ДЛЯ ДОБАВЛЕННЫХ ЗАДАЧ --- */
+
+/* Контейнер самой задачи (строка) */
+.todo-item {
+    display: flex;
+    justify-content: space-between; /* Текст слева, кнопки справа */
+    align-items: center;
+    background: rgba(255, 255, 255, 0.2); /* Полупрозрачный фон */
+    backdrop-filter: blur(10px);
+    padding: 10px 15px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+/* Левая часть: чекбокс + текст */
+.task-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+/* Стилизация текста задачи */
+.task-text {
+    color: white;
+    font-size: 16px;
+    font-family: inherit; /* Использует шрифт из body */
+    outline: none; /* Убираем рамку при редактировании */
+    word-break: break-all; /* Чтобы длинный текст переносился */
+}
+
+/* Правая часть: кнопки */
+.task-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Стилизация ваших кнопок (карандаш и корзина) */
+.task-right button {
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #333;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.task-right button:hover {
+    background: white;
+    transform: scale(1.05);
+}
+
+/* Убираем стандартный вид чекбокса и делаем его круглым */
+.todo-item .checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Заливка чекбокса при нажатии */
+.todo-item .checkbox:checked {
+    background-color: #ff6b81; /* Ваш розовый/красный цвет */
+    border-color: #ff6b81;
+}
+
+/* Галочка внутри чекбокса (рисуем через псевдоэлемент) */
+.todo-item .checkbox:checked::after {
+    content: '✔';
+    color: white;
+    font-size: 12px;
+    position: absolute;
+}
+
+/* --- СТИЛИ ДЛЯ ВЫПОЛНЕННОЙ ЗАДАЧИ (когда стоит галочка) --- */
+.todo-item.completed {
+    opacity: 0.6;
+}
+
+.todo-item.completed .task-text {
+    text-decoration: line-through;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Фикс для кнопки редактирования, когда она прячется */
+/* (в JS мы используем display: none, это уберет пустое место) */
+.todo-item.completed .edit-btn {
+    display: none;
+}
